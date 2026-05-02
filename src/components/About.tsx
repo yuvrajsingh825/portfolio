@@ -2,9 +2,9 @@ import { motion } from "motion/react";
 import { User, GraduationCap, Cpu, Globe } from "lucide-react";
 
 const HIGHLIGHTS = [
-  { icon: GraduationCap, text: "B.Tech CSE (AI) student at Medicaps University" },
-  { icon: Cpu, text: "Focused on Artificial Intelligence, DSA & Web Development" },
-  { icon: Globe, text: "Building real-world projects and scalable solutions" },
+  { icon: GraduationCap, text: "B.Tech CSE (AI) @ Medicaps University" },
+  { icon: Cpu, text: "Focused on DSA, AI fundamentals & full-stack development" },
+  { icon: Globe, text: "Building real-world projects with practical impact" },
 ];
 
 export default function About() {
@@ -15,7 +15,7 @@ export default function About() {
           
           {/* LEFT SIDE */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="space-y-8"
@@ -28,15 +28,21 @@ export default function About() {
             </div>
 
             <p className="text-lg text-zinc-400 leading-relaxed">
-              I am a <strong>B.Tech Computer Science (AI)</strong> student at Medicaps University 
-              with a <strong>CGPA of 7.5+</strong>. I am passionate about building intelligent systems 
-              and solving real-world problems using technology.
+              I am a <strong>B.Tech Computer Science (AI)</strong> student with a 
+              strong interest in building intelligent systems and solving real-world problems 
+              using technology. Currently maintaining a <strong>CGPA of 7.5+</strong>.
             </p>
 
             <p className="text-lg text-zinc-400 leading-relaxed">
-              Currently, I am focused on <strong>Data Structures & Algorithms</strong>, 
-              <strong> Web Development</strong>, and exploring <strong>AI tools & technologies</strong>. 
-              My goal is to become a skilled software engineer and work in top product-based companies.
+              My focus lies in <strong>Data Structures & Algorithms</strong>, 
+              <strong> full-stack web development</strong>, and exploring practical applications of 
+              <strong> Artificial Intelligence</strong>. I enjoy turning ideas into real projects 
+              that demonstrate both logic and usability.
+            </p>
+
+            <p className="text-lg text-zinc-400 leading-relaxed">
+              I am actively working towards becoming a <strong>software engineer</strong> capable of 
+              building scalable systems and contributing to high-impact tech products.
             </p>
 
             <div className="space-y-4">
@@ -53,7 +59,7 @@ export default function About() {
 
           {/* RIGHT SIDE CARDS */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-4"
@@ -61,14 +67,14 @@ export default function About() {
             <div className="space-y-4 pt-12">
               
               {/* CGPA */}
-              <div className="h-48 glass rounded-2xl flex flex-col justify-end p-6 group hover:translate-y-[-8px] transition-transform">
+              <div className="h-48 glass rounded-2xl flex flex-col justify-end p-6 group hover:translate-y-[-10px] hover:shadow-cyan-500/10 transition-all">
                 <span className="text-3xl font-bold text-cyan-400 mb-2">7.5+</span>
                 <span className="text-xs uppercase tracking-widest text-zinc-500">CGPA</span>
               </div>
 
               {/* PROJECTS */}
-              <div className="h-64 glass rounded-2xl flex flex-col justify-end p-6 bg-gradient-to-tr from-cyan-500/10 to-transparent group hover:translate-y-[-8px] transition-transform">
-                <span className="text-3xl font-bold text-white mb-2">3+</span>
+              <div className="h-64 glass rounded-2xl flex flex-col justify-end p-6 bg-gradient-to-tr from-cyan-500/10 to-transparent group hover:translate-y-[-10px] hover:shadow-cyan-500/10 transition-all">
+                <span className="text-3xl font-bold text-white mb-2">5+</span>
                 <span className="text-xs uppercase tracking-widest text-zinc-500">Projects Built</span>
               </div>
             </div>
@@ -76,13 +82,13 @@ export default function About() {
             <div className="space-y-4">
               
               {/* GRADUATION */}
-              <div className="h-64 glass rounded-2xl flex flex-col justify-end p-6 bg-gradient-to-tr from-purple-500/10 to-transparent group hover:translate-y-[-8px] transition-transform">
+              <div className="h-64 glass rounded-2xl flex flex-col justify-end p-6 bg-gradient-to-tr from-purple-500/10 to-transparent group hover:translate-y-[-10px] hover:shadow-purple-500/10 transition-all">
                 <span className="text-3xl font-bold text-white mb-2">2027</span>
                 <span className="text-xs uppercase tracking-widest text-zinc-500">Expected Graduation</span>
               </div>
 
               {/* LEARNING */}
-              <div className="h-48 glass rounded-2xl flex flex-col justify-end p-6 group hover:translate-y-[-8px] transition-transform">
+              <div className="h-48 glass rounded-2xl flex flex-col justify-end p-6 group hover:translate-y-[-10px] hover:shadow-purple-500/10 transition-all">
                 <span className="text-3xl font-bold text-purple-500 mb-2">∞</span>
                 <span className="text-xs uppercase tracking-widest text-zinc-500">Continuous Learning</span>
               </div>

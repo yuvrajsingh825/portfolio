@@ -15,12 +15,12 @@ export default function Projects() {
             </div>
 
             <h2 className="text-4xl font-bold tracking-tight mb-4">
-              My Projects
+              Featured Projects
             </h2>
 
             <p className="text-zinc-400 max-w-xl">
-              Real-world projects showcasing my skills in web development, 
-              problem solving, and artificial intelligence.
+              Selected projects demonstrating my expertise in Artificial Intelligence, 
+              problem solving, and modern web development.
             </p>
           </div>
 
@@ -29,7 +29,7 @@ export default function Projects() {
             target="_blank"
             className="hidden md:flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold uppercase tracking-widest"
           >
-            View All on GitHub
+            View GitHub →
             <ExternalLink size={16} />
           </a>
         </div>
@@ -39,11 +39,11 @@ export default function Projects() {
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group glass rounded-3xl overflow-hidden hover:border-cyan-400/40 hover:shadow-2xl transition-all flex flex-col h-full"
+              className="group glass rounded-3xl overflow-hidden hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all flex flex-col h-full"
             >
 
               {/* IMAGE */}
@@ -54,24 +54,28 @@ export default function Projects() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
 
-                {/* Hover buttons */}
+                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-4">
 
-                  <a 
-                    href={project.github} 
-                    target="_blank"
-                    className="p-3 rounded-full bg-white text-black hover:bg-cyan-400 transition"
-                  >
-                    <Github size={20} />
-                  </a>
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank"
+                      className="p-3 rounded-full bg-white text-black hover:bg-cyan-400 transition"
+                    >
+                      <Github size={20} />
+                    </a>
+                  )}
 
-                  <a 
-                    href={project.link} 
-                    target="_blank"
-                    className="p-3 rounded-full bg-white text-black hover:bg-cyan-400 transition"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
+                  {project.link && project.link !== "#" && (
+                    <a 
+                      href={project.link} 
+                      target="_blank"
+                      className="p-3 rounded-full bg-white text-black hover:bg-cyan-400 transition"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
 
                 </div>
               </div>
@@ -84,7 +88,7 @@ export default function Projects() {
                   {project.tags.map(tag => (
                     <span 
                       key={tag} 
-                      className="text-[10px] uppercase px-2 py-1 rounded bg-white/5 text-zinc-400"
+                      className="text-[10px] uppercase px-2 py-1 rounded bg-white/5 text-zinc-400 border border-white/5"
                     >
                       {tag}
                     </span>
@@ -103,17 +107,19 @@ export default function Projects() {
 
                 {/* FOOTER */}
                 <div className="pt-4 border-t border-white/5 flex justify-between items-center">
-                  <span className="text-xs text-zinc-600">
-                    0{index + 1}
+                  <span className="text-xs text-zinc-600 font-mono">
+                    #{index + 1}
                   </span>
 
-                  <a 
-                    href={project.link}
-                    target="_blank"
-                    className="text-xs font-semibold uppercase tracking-widest text-zinc-400 hover:text-cyan-400 transition"
-                  >
-                    View Project →
-                  </a>
+                  {project.link && project.link !== "#" && (
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      className="text-xs font-semibold uppercase tracking-widest text-zinc-400 hover:text-cyan-400 transition"
+                    >
+                      Live →
+                    </a>
+                  )}
                 </div>
 
               </div>

@@ -1,5 +1,5 @@
-import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Download } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -11,28 +11,36 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
         
-        {/* LEFT SIDE TEXT */}
+        {/* LEFT */}
         <div className="flex-1 text-center md:text-left">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
             <h2 className="text-cyan-400 font-mono text-sm tracking-widest uppercase mb-4">
-              Available for Internships
+              Open to Internships & Opportunities
             </h2>
 
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 leading-tight">
               Hi, I'm <span className="text-cyan-400">Yuvraj Singh Tomar</span>
             </h1>
 
-            <p className="text-xl text-zinc-400 max-w-2xl mb-8 leading-relaxed">
-              A B.Tech CSE student specializing in Artificial Intelligence. 
-              Building intelligent systems and crafting exceptional digital experiences.
+            {/* ROLE TAG */}
+            <h3 className="text-lg md:text-xl text-zinc-300 mb-6">
+              Aspiring <span className="text-cyan-400 font-semibold">AI Developer</span> | Problem Solver
+            </h3>
+
+            {/* DESCRIPTION */}
+            <p className="text-lg text-zinc-400 max-w-2xl mb-8 leading-relaxed">
+              I build intelligent systems and scalable web applications by combining 
+              AI concepts, problem solving, and modern development practices. 
+              Passionate about creating impactful solutions.
             </p>
 
+            {/* BUTTONS */}
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              
+
               <a 
                 href="#projects"
                 className="w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-cyan-400 transition-all flex items-center justify-center gap-2 group"
@@ -42,20 +50,22 @@ export default function Hero() {
               </a>
 
               <a 
-                href="#contact"
+                href="/resume.pdf"
+                download
                 className="w-full sm:w-auto px-8 py-4 border border-white/10 text-white font-semibold rounded-full hover:bg-white/5 transition-all flex items-center justify-center gap-2"
               >
-                Contact Me
+                Download Resume
+                <Download size={18} />
               </a>
 
             </div>
           </motion.div>
         </div>
 
-        {/* RIGHT SIDE IMAGE */}
+        {/* RIGHT IMAGE */}
         <motion.div 
           className="flex-1 relative"
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
@@ -66,7 +76,7 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-full border border-purple-500/30 scale-125" />
 
             {/* IMAGE */}
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl">
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl hover:scale-105 transition">
               <img 
                 src="/profile.jpg" 
                 alt="Yuvraj Singh Tomar" 
@@ -74,9 +84,9 @@ export default function Hero() {
               />
             </div>
 
-            {/* Floating Tags */}
+            {/* FLOAT TAGS */}
             <motion.div 
-              className="absolute -top-4 -right-4 bg-black/60 px-4 py-2 rounded-xl text-xs"
+              className="absolute -top-4 -right-4 bg-black/60 px-4 py-2 rounded-xl text-xs border border-white/10"
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4 }}
             >
@@ -84,11 +94,11 @@ export default function Hero() {
             </motion.div>
 
             <motion.div 
-              className="absolute -bottom-4 -left-4 bg-black/60 px-4 py-2 rounded-xl text-xs"
+              className="absolute -bottom-4 -left-4 bg-black/60 px-4 py-2 rounded-xl text-xs border border-white/10"
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 5 }}
             >
-               AI Developer
+              AI Developer
             </motion.div>
 
           </div>
