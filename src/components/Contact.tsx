@@ -6,12 +6,6 @@ import emailjs from "@emailjs/browser";
 export default function Contact() {
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
   const [status, setStatus] = useState("idle");
   const [responseMsg, setResponseMsg] = useState("");
 
@@ -23,21 +17,18 @@ export default function Contact() {
     setStatus("loading");
 
     emailjs.sendForm(
-      "service_9kw5g1r",       // ✅ correct service id
-      "template_658iyy6",      // ✅ correct template id
+      "service_9kw5g1r",
+      "template_658iyy6",
       formRef.current,
-      "rRb84tKA0BCvdeFk7"      // ✅ public key
+      "rRb84tKA0BCvdeFk7"
     )
     .then(() => {
       setStatus("success");
       setResponseMsg("Message sent successfully 🚀");
-
-      // reset form
-      setFormData({ name: "", email: "", message: "" });
-      formRef.current?.reset();   // ⭐ IMPORTANT FIX
+      formRef.current?.reset();
     })
     .catch((error) => {
-      console.error(error);
+      console.error("EmailJS Error:", error);
       setStatus("error");
       setResponseMsg("Something went wrong ❌");
     });
@@ -48,7 +39,6 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-          {/* FORM */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -70,10 +60,6 @@ export default function Contact() {
                   name="from_name"
                   placeholder="Your Name"
                   required
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
                   className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
                 />
 
@@ -82,10 +68,6 @@ export default function Contact() {
                   name="from_email"
                   placeholder="Your Email"
                   required
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
                   className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
                 />
 
@@ -94,18 +76,7 @@ export default function Contact() {
                   name="message"
                   placeholder="Your Message"
                   required
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
                   className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
-                />
-
-                {/* ⭐ ADD THIS (important for reply email) */}
-                <input
-                  type="hidden"
-                  name="to_email"
-                  value="yuvrajs6400@gmail.com"
                 />
 
                 <button
@@ -115,7 +86,6 @@ export default function Contact() {
                   {status === "loading" ? "Sending..." : "Send Message"}
                 </button>
 
-                {/* ERROR MESSAGE */}
                 {status === "error" && (
                   <p className="text-red-400 text-sm text-center">
                     {responseMsg}
@@ -124,6 +94,7 @@ export default function Contact() {
 
               </form>
             )}
+
           </motion.div>
 
         </div>
