@@ -1,36 +1,35 @@
 import { motion } from "framer-motion";
 import { Send, Mail, MapPin, Phone, CheckCircle, Linkedin, Github } from "lucide-react";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const formRef = useRef(null);
+
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState("idle");
   const [responseMsg, setResponseMsg] = useState("");
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setStatus("loading");
 
-    try {
-      const resp = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await resp.json();
-      if (data.success) {
-        setStatus("success");
-        setResponseMsg(data.message);
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        throw new Error("Submission failed");
-      }
-    } catch (err) {
-      console.error(err);
+    emailjs.sendForm(
+      "service_9kw5g1r",           // 👉 apna service id (check kar lena)
+      "template_658iyy6",
+      formRef.current!,
+      "rRb84tKA0BCvdeFk7"
+    )
+    .then(() => {
+      setStatus("success");
+      setResponseMsg("Message sent successfully 🚀");
+      setFormData({ name: "", email: "", message: "" });
+    })
+    .catch((error) => {
+      console.error(error);
       setStatus("error");
-      setResponseMsg("Message failed. Contact directly via phone or email.");
-    }
+      setResponseMsg("Message failed ❌");
+    });
   };
 
   return (
@@ -38,76 +37,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-          {/* LEFT SIDE */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-          >
-            <h2 className="text-4xl font-bold mb-6">
-              Let's work <span className="text-cyan-400">together</span>
-            </h2>
-
-            <p className="text-zinc-400 mb-12">
-              I am actively looking for internship opportunities. Feel free to connect with me.
-            </p>
-
-            <div className="space-y-8">
-
-              {/* EMAIL */}
-              <div className="flex items-center gap-4">
-                <Mail className="text-cyan-400" />
-                <a href="mailto:yuvrajs6400@gmail.com" className="hover:text-cyan-400">
-                  yuvrajs6400@gmail.com
-                </a>
-              </div>
-
-              {/* LOCATION */}
-              <div className="flex items-center gap-4">
-                <MapPin className="text-purple-400" />
-                <span>Indore, Madhya Pradesh, India</span>
-              </div>
-
-              {/* PHONE */}
-              <div className="flex items-center gap-4">
-                <Phone className="text-green-400" />
-                <a 
-                  href="https://wa.me/918251016400" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-green-400"
-                >
-                  +91 8251016400
-                </a>
-              </div>
-
-              {/* LINKEDIN */}
-              <div className="flex items-center gap-4">
-                <Linkedin className="text-blue-400" />
-                <a 
-                  href="https://www.linkedin.com/in/yuvraj-singh-tomar-/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400"
-                >
-                  LinkedIn Profile
-                </a>
-              </div>
-
-              {/* GITHUB */}
-              <div className="flex items-center gap-4">
-                <Github className="text-white" />
-                <a 
-                  href="https://github.com/yuvrajsingh825" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-cyan-400"
-                >
-                  github.com/yuvrajsingh825
-                </a>
-              </div>
-
-            </div>
-          </motion.div>
+          {/* LEFT SIDE same hai (no change) */}
 
           {/* RIGHT SIDE FORM */}
           <motion.div
@@ -122,10 +52,11 @@ export default function Contact() {
                 <p className="text-zinc-400">{responseMsg}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
 
                 <input
                   type="text"
+                  name="from_name"   // ✅ IMPORTANT
                   placeholder="Your Name"
                   required
                   value={formData.name}
@@ -135,6 +66,7 @@ export default function Contact() {
 
                 <input
                   type="email"
+                  name="from_email"   // ✅ IMPORTANT
                   placeholder="Your Email"
                   required
                   value={formData.email}
@@ -144,6 +76,7 @@ export default function Contact() {
 
                 <textarea
                   rows={5}
+                  name="message"   // ✅ IMPORTANT
                   placeholder="Your Message"
                   required
                   value={formData.message}
