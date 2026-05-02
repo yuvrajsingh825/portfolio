@@ -39,6 +39,26 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
+          {/* 🔥 LEFT SIDE (ADD THIS) */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
+            <h2 className="text-3xl font-bold text-white">Get in Touch</h2>
+
+            <p className="text-zinc-400">
+              Feel free to contact me for projects, collaborations or just a hello 👋
+            </p>
+
+            <div className="space-y-4 text-zinc-300">
+              <p>📧 yuvrajs6400@gmail.com</p>
+              <p>📍 Indore, India</p>
+            </div>
+          </motion.div>
+
+
+          {/* RIGHT SIDE (FORM) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
