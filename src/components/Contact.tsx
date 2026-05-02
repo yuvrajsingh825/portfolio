@@ -16,22 +16,23 @@ export default function Contact() {
 
     setStatus("loading");
 
-    emailjs.sendForm(
-      "service_9kw5g1r",
-      "template_658iyy6",
-      formRef.current,
-      "rRb84tKA0BCvdeFk7"
-    )
-    .then(() => {
-      setStatus("success");
-      setResponseMsg("Message sent successfully 🚀");
-      formRef.current?.reset();
-    })
-    .catch((error) => {
-      console.error("EmailJS Error:", error);
-      setStatus("error");
-      setResponseMsg("Something went wrong ❌");
-    });
+    emailjs
+      .sendForm(
+        "service_9kw5g1r",
+        "template_658iyy6",
+        formRef.current,
+        "rRb84tKA0BCvdeFk7"
+      )
+      .then(() => {
+        setStatus("success");
+        setResponseMsg("Message sent successfully 🚀");
+        formRef.current?.reset();
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        setStatus("error");
+        setResponseMsg("Something went wrong ❌");
+      });
   };
 
   return (
@@ -39,7 +40,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-          {/* 🔥 LEFT SIDE (ADD THIS) */}
+          {/* 🔥 LEFT SIDE */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -51,20 +52,50 @@ export default function Contact() {
               Feel free to contact me for projects, collaborations or just a hello 👋
             </p>
 
-            <div className="space-y-4 text-zinc-300">
+            <div className="space-y-3 text-zinc-300">
               <p>📧 yuvrajs6400@gmail.com</p>
-              <p>📍 Indore, India</p>
+              <p>📍 Ujjain, India</p>
+            </div>
+
+            {/* 🔗 SOCIAL LINKS */}
+            <div className="flex gap-4 pt-4 flex-wrap">
+
+              <a
+                href="https://www.linkedin.com/in/yuvraj-singh-tomar-"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-white/10 rounded-xl hover:bg-white/20 transition"
+              >
+                🔗 LinkedIn
+              </a>
+
+              <a
+                href="https://github.com/yuvrajsingh825"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-white/10 rounded-xl hover:bg-white/20 transition"
+              >
+                💻 GitHub
+              </a>
+
+              <a
+                href="https://wa.me/918251016400"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-green-500 text-black rounded-xl hover:bg-green-400 transition"
+              >
+                💬 WhatsApp
+              </a>
+
             </div>
           </motion.div>
 
-
-          {/* RIGHT SIDE (FORM) */}
+          {/* ✅ RIGHT SIDE (FORM) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="glass rounded-3xl p-8"
           >
-
             {status === "success" ? (
               <div className="text-center space-y-4">
                 <CheckCircle size={50} className="text-green-500 mx-auto" />
@@ -72,7 +103,6 @@ export default function Contact() {
                 <p className="text-zinc-400">{responseMsg}</p>
               </div>
             ) : (
-
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
 
                 <input
@@ -114,7 +144,6 @@ export default function Contact() {
 
               </form>
             )}
-
           </motion.div>
 
         </div>
