@@ -52,19 +52,20 @@ export default function Contact() {
               Feel free to contact me for projects, collaborations or just a hello 👋
             </p>
 
+            {/* 📍 BASIC INFO */}
             <div className="space-y-3 text-zinc-300">
               <p>📧 yuvrajs6400@gmail.com</p>
-              <p>📍 Ujjain, India</p>
+              <p>📍 Indore, India</p>
             </div>
 
-            {/* 🔗 SOCIAL LINKS */}
-            <div className="flex gap-4 pt-4 flex-wrap">
+            {/* 🔗 SIMPLE LINKS (VERTICAL) */}
+            <div className="space-y-2 text-zinc-300">
 
               <a
                 href="https://www.linkedin.com/in/yuvraj-singh-tomar-"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-white/10 rounded-xl hover:bg-white/20 transition"
+                className="block hover:text-cyan-400 transition"
               >
                 🔗 LinkedIn
               </a>
@@ -73,7 +74,7 @@ export default function Contact() {
                 href="https://github.com/yuvrajsingh825"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-white/10 rounded-xl hover:bg-white/20 transition"
+                className="block hover:text-cyan-400 transition"
               >
                 💻 GitHub
               </a>
@@ -82,7 +83,7 @@ export default function Contact() {
                 href="https://wa.me/918251016400"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-green-500 text-black rounded-xl hover:bg-green-400 transition"
+                className="block hover:text-green-400 transition"
               >
                 💬 WhatsApp
               </a>
@@ -90,7 +91,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* ✅ RIGHT SIDE (FORM) */}
+          {/* ✅ RIGHT SIDE FORM */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
