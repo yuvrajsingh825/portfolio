@@ -8,7 +8,7 @@ export const PROJECTS: Project[] = [
     tags: ["React", "TypeScript", "Node.js", "Gemini API", "Tailwind"],
     link: "#",
     github: "#",
-    image: "https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6",
+    image: "/contextai-banner.png",
   },
   {
     id: "2",
