@@ -3,6 +3,15 @@ import { Project, Skill } from "./types";
 export const PROJECTS: Project[] = [
   {
     id: "1",
+    title: "ContextAI",
+    description: "A production-ready AI SaaS platform for smart content generation. Features include Google Analytics 4 integration and referral growth loop.",
+    tags: ["React", "TypeScript", "Node.js", "Gemini API", "Tailwind"],
+    link: "#",
+    github: "#",
+    image: "https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6",
+  },
+  {
+    id: "2",
     title: "AI Image Generator",
     description: "A full-stack application using Gemini API to generate creative images from text prompts with a futuristic UI.",
     tags: ["React", "Express", "Gemini API", "Tailwind"],
@@ -11,7 +20,7 @@ export const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1675271591211-126ad94e495d?auto=format&fit=crop&q=80&w=800",
   },
   {
-    id: "2",
+    id: "3",
     title: "Smart Attendance System",
     description: "An AI-powered attendance tracking system using computer vision and facial recognition for university classes.",
     tags: ["Python", "OpenCV", "TensorFlow", "React"],
@@ -20,7 +29,7 @@ export const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800",
   },
   {
-    id: "3",
+    id: "4",
     title: "Portfolio 2.0",
     description: "A high-performance portfolio website with smooth animations and a minimalist design aesthetic.",
     tags: ["TypeScript", "Motion", "Vite", "Tailwind"],
